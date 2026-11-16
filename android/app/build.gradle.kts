@@ -34,7 +34,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.zulipmobile"
+        applicationId = "online.lizubin.jiweichat"
         minSdk = 26
         targetSdk = flutter.targetSdkVersion
         // These are synced to local.properties from pubspec.yaml by the flutter tool.

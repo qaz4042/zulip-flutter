@@ -22,6 +22,15 @@ void main() {
 
   // The token logic is tested end-to-end in `test/model/push_device_test.dart`.
 
+  if (const bool.fromEnvironment('JIWEI_DISABLE_PUSH')) {
+    testWidgets('disabled push does not initialize Firebase or fetch a token', (tester) async {
+      await init();
+      check(() => testBinding.firebaseMessaging).throws<AssertionError>();
+      check(NotificationService.instance.token.value).isNull();
+    }, variant: const TargetPlatformVariant({TargetPlatform.android, TargetPlatform.iOS}));
+    return;
+  }
+
   group('permissions', () {
     testWidgets('request permission', (tester) async {
       await init();

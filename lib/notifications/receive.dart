@@ -65,6 +65,9 @@ class NotificationService {
 
   Future<void> start() async {
     NotificationOpenService.instance.start();
+    if (const bool.fromEnvironment('JIWEI_DISABLE_PUSH')) {
+      return;
+    }
 
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
